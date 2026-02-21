@@ -8,19 +8,22 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    try {
-      const res = await API.post("/auth/login", {
-        email,
-        password,
-      });
+  try {
+    const res = await API.post("/auth/login", {
+      email,
+      password,
+    });
 
-      localStorage.setItem("token", res.data.token);
-      navigate("/dashboard");
+    // save token + role
+    localStorage.setItem("token", res.data.token);
+    localStorage.setItem("role", res.data.role);
 
-    } catch (err) {
-      alert(err.response?.data?.error || "Login failed");
-    }
-  };
+    navigate("/dashboard");
+
+  } catch (err) {
+    alert("Login failed");
+  }
+};
 
   return (
     <div className="container">
