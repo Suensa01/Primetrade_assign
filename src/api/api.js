@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "primetradebackend-production.up.railway.app",
+  baseURL: "https://primetradebackend-production.up.railway.app/",
 });
 
 API.interceptors.request.use((req) => {
